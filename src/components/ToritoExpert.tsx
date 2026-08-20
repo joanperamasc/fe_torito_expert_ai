@@ -58,23 +58,38 @@ export default function ToritoExpert() {
   const initialLoadDone = useRef(false);
 
   useEffect(() => {
-    fetch('/data/torito.json')
-      .then(res => res.json())
-      .then((data: any[]) => {
-        const formattedDraws: DrawRecord[] = data.map((item) => {
-          return {
-             id: item.id.toString(),
-             date: item.f,
-             numbers: [...item.n]
-          };
-        });
-        setDraws(formattedDraws);
-        setPrediction(null);
-        setError(null);
+    const processData = (data: any[]) => {
+      const formattedDraws: DrawRecord[] = data.map((item) => {
+        return {
+           id: item.id.toString(),
+           date: item.f,
+           numbers: [...item.n]
+        };
+      });
+      setDraws(formattedDraws);
+      setPrediction(null);
+      setError(null);
+    };
+
+    fetch('https://xsuerte-landing-zone-prod.s3.us-east-1.amazonaws.com/latest/torito.json')
+      .then(res => {
+        if (!res.ok) throw new Error('Network response was not ok');
+        return res.json();
       })
+      .then(processData)
       .catch(err => {
-        console.error('Error fetching data:', err);
-        setError('Error al cargar la base de datos de sorteos.');
+        console.warn('S3 fetch failed, falling back to local data:', err);
+        // Fallback to local data
+        fetch('/data/torito.json')
+          .then(res => {
+            if (!res.ok) throw new Error('Local fallback failed');
+            return res.json();
+          })
+          .then(processData)
+          .catch(fallbackErr => {
+            console.error('Error fetching data (including fallback):', fallbackErr);
+            setError('Error al cargar la base de datos de sorteos.');
+          });
       });
   }, []);
 
