@@ -18,21 +18,39 @@ import GoogleAnalytics from '../components/GoogleAnalytics.astro';
 		<meta name="keywords" content="Torito, Torito 1 Millón, predicciones Torito, resultados Torito, estadísticas Torito, ganar el torito, lotería Perú, inteligencia artificial Torito" />
 		<meta name="author" content="Torito Expert" />
 		<meta name="robots" content="index, follow" />
-		<link rel="canonical" href="https://toritoexpert.pe/" />
+		<link rel="canonical" href="https://toritoexpert.peramas.com/" />
 
 		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content="website" />
-		<meta property="og:url" content="https://toritoexpert.pe/" />
+		<meta property="og:url" content="https://toritoexpert.peramas.com/" />
 		<meta property="og:title" content="Torito Expert AI | Análisis Estadístico y Predicciones" />
 		<meta property="og:description" content="Aumenta tus probabilidades de ganar Torito 1 Millón. Analizamos el historial de sorteos para recomendarte jugadas basadas en pura matemática." />
-		<meta property="og:image" content="https://toritoexpert.pe/social-preview.jpg" />
+		<meta property="og:image" content="https://toritoexpert.peramas.com/social-preview.jpg" />
 
 		<!-- Twitter -->
 		<meta property="twitter:card" content="summary_large_image" />
-		<meta property="twitter:url" content="https://toritoexpert.pe/" />
+		<meta property="twitter:url" content="https://toritoexpert.peramas.com/" />
 		<meta property="twitter:title" content="Torito Expert AI | Análisis Estadístico y Predicciones" />
 		<meta property="twitter:description" content="Aumenta tus probabilidades de ganar Torito 1 Millón. Analizamos el historial de sorteos para recomendarte jugadas basadas en pura matemática." />
-		<meta property="twitter:image" content="https://toritoexpert.pe/social-preview.jpg" />
+		<meta property="twitter:image" content="https://toritoexpert.peramas.com/social-preview.jpg" />
+		
+		<!-- Schema.org JSON-LD -->
+		<script type="application/ld+json" set:html={`
+			{
+			  "@context": "https://schema.org",
+			  "@type": "WebApplication",
+			  "name": "Torito Expert AI",
+			  "url": "https://toritoexpert.peramas.com/",
+			  "description": "Maximiza tus oportunidades de ganar Torito 1 Millón con Torito Expert AI. Procesamos el historial completo de sorteos utilizando inteligencia estadística para generar tu próxima jugada.",
+			  "applicationCategory": "UtilityApplication",
+			  "operatingSystem": "All",
+			  "offers": {
+				"@type": "Offer",
+				"price": "0",
+				"priceCurrency": "PEN"
+			  }
+			}
+		`} />
 	</head>
 	<body class="bg-red-950 text-slate-200 antialiased selection:bg-yellow-500/30">
 		<ToritoExpert client:load />
