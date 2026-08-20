@@ -1,0 +1,40 @@
+---
+import '../styles/global.css';
+import ToritoExpert from '../components/ToritoExpert.tsx';
+import GoogleAnalytics from '../components/GoogleAnalytics.astro';
+---
+
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+		<GoogleAnalytics measurementId="G-TQ303V2TR4" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="generator" content={Astro.generator} />
+		
+		<!-- SEO Básico -->
+		<title>Torito Expert AI | Análisis Estadístico y Predicciones de Torito 1 Millón</title>
+		<meta name="description" content="Maximiza tus oportunidades de ganar Torito 1 Millón con Torito Expert AI. Procesamos el historial completo de sorteos utilizando inteligencia estadística, la Ley del Tercio, análisis de Gaps y frecuencias matemáticas para generar tu próxima jugada." />
+		<meta name="keywords" content="Torito, Torito 1 Millón, predicciones Torito, resultados Torito, estadísticas Torito, ganar el torito, lotería Perú, inteligencia artificial Torito" />
+		<meta name="author" content="Torito Expert" />
+		<meta name="robots" content="index, follow" />
+		<link rel="canonical" href="https://toritoexpert.pe/" />
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://toritoexpert.pe/" />
+		<meta property="og:title" content="Torito Expert AI | Análisis Estadístico y Predicciones" />
+		<meta property="og:description" content="Aumenta tus probabilidades de ganar Torito 1 Millón. Analizamos el historial de sorteos para recomendarte jugadas basadas en pura matemática." />
+		<meta property="og:image" content="https://toritoexpert.pe/social-preview.jpg" />
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content="https://toritoexpert.pe/" />
+		<meta property="twitter:title" content="Torito Expert AI | Análisis Estadístico y Predicciones" />
+		<meta property="twitter:description" content="Aumenta tus probabilidades de ganar Torito 1 Millón. Analizamos el historial de sorteos para recomendarte jugadas basadas en pura matemática." />
+		<meta property="twitter:image" content="https://toritoexpert.pe/social-preview.jpg" />
+	</head>
+	<body class="bg-red-950 text-slate-200 antialiased selection:bg-yellow-500/30">
+		<ToritoExpert client:load />
+	</body>
+</html>

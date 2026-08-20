@@ -1,0 +1,158 @@
+---
+import '../styles/global.css';
+import GoogleAnalytics from '../components/GoogleAnalytics.astro';
+---
+
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <GoogleAnalytics measurementId="G-TQ303V2TR4" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>¿Cómo funciona la IA? | Torito Expert</title>
+    <meta name="description" content="Conoce la metodología detrás de las predicciones de Torito Expert AI. Ley del tercio, gaps, sumas y frecuencias absolutas explicadas al detalle." />
+</head>
+<body class="bg-red-950 text-slate-200 antialiased selection:bg-yellow-500/30">
+    <header class="border-b border-red-800 bg-red-950/80 backdrop-blur-xl sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 h-20 flex items-center justify-between">
+          <a href="/" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
+             <div class="bg-gradient-to-br from-yellow-400 to-yellow-600 p-2.5 rounded-xl shadow-lg shadow-yellow-500/20">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-red-950"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+             </div>
+             <div>
+               <h1 class="text-2xl font-black tracking-tight text-white flex items-center gap-2 italic">
+                 TORITO <span class="text-yellow-500">EXPERT</span> <span class="bg-yellow-500/10 text-yellow-500 text-xs py-1 px-2 rounded-md border border-yellow-500/20">AI</span>
+               </h1>
+             </div>
+          </a>
+          <div class="flex items-center gap-6">
+              <a href="https://github.com/joanperamasc/fe_torito_expert_ai" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition-colors relative group">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.24c3-.3 6-1.5 6-6.76a5.5 5.5 0 0 0-1.5-3.8c.15-.38.65-1.8-.15-3.8 0 0-1.2-.38-3.9 1.45a13.3 13.3 0 0 0-7 0C6.2 1.62 5 2 5 2c-.8 2-.3 3.42-.15 3.8A5.5 5.5 0 0 0 3.35 9.6c0 5.26 3 6.46 6 6.76-.7.62-1 1.5-1 2.5v4"/><path d="M7 20c-3.1 1-5-1-5-3"/></svg>
+                  <span class="absolute top-full mt-3 left-1/2 -translate-x-1/2 bg-slate-800 text-xs font-medium text-slate-200 px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-all scale-95 group-hover:scale-100 whitespace-nowrap pointer-events-none shadow-[0_0_15px_rgba(0,0,0,0.5)] border border-slate-700">
+                      Ver código en GitHub
+                  </span>
+              </a>
+              <a href="/" class="text-sm font-semibold text-slate-400 hover:text-white transition-colors">
+                  &larr; Volver al inicio
+              </a>
+          </div>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 py-16">
+        <div class="max-w-none">
+            <h1 class="text-4xl md:text-5xl font-black text-white mb-8 tracking-tight">La Ciencia Detrás de <span class="text-yellow-500">Nuestra IA</span></h1>
+            
+            <p class="text-xl text-slate-400 mb-12 leading-relaxed">
+                A diferencia de los sistemas de elección aleatoria ("Al azar"), Torito Expert AI procesa la base de datos histórica completa de todos los sorteos, aplicando modelos estadísticos matemáticos para maximizar tus probabilidades de acertar en la lotería Torito 1 Millón.
+            </p>
+
+            <div class="space-y-10">
+                <section class="bg-slate-900/30 border border-red-800/50 p-8 rounded-3xl hover:bg-slate-900/50 transition-colors">
+                    <h2 class="text-2xl font-bold text-white flex items-center gap-3 mb-4">
+                        <span class="text-yellow-500 text-3xl font-black">1.</span> Análisis de Frecuencias Absolutas
+                    </h2>
+                    <p class="text-slate-300 leading-relaxed text-lg">
+                        Nuestra red neuronal rastrea cuántas veces ha salido cada bolilla desde el inicio de los tiempos. Identificamos los números "Calientes" (los que más salen) y los "Fríos" (los más rezagados). En una muestra lo suficientemente grande, la lotería no es perfectamente aleatoria debido a las imperfecciones mecánicas de los bombos.
+                    </p>
+                </section>
+
+                <section class="bg-slate-900/30 border border-red-800/50 p-8 rounded-3xl hover:bg-slate-900/50 transition-colors">
+                    <h2 class="text-2xl font-bold text-white flex items-center gap-3 mb-4">
+                        <span class="text-yellow-500 text-3xl font-black">2.</span> La Ley del Tercio
+                    </h2>
+                    <p class="text-slate-300 leading-relaxed text-lg">
+                        Un principio fundamental en los juegos de azar continuos. La Ley del Tercio dicta que en un ciclo de extracción, un tercio de los números no saldrá nunca, otro tercio saldrá exactamente una vez, y el último tercio saldrá múltiples veces. Nuestro algoritmo agrupa y predice cuáles números están listos para repetir su aparición y cuáles deben ser evitados.
+                    </p>
+                </section>
+
+                <section class="bg-slate-900/30 border border-red-800/50 p-8 rounded-3xl hover:bg-slate-900/50 transition-colors">
+                    <h2 class="text-2xl font-bold text-white flex items-center gap-3 mb-4">
+                        <span class="text-yellow-500 text-3xl font-black">3.</span> Análisis de "Gaps" (Ausencias)
+                    </h2>
+                    <p class="text-slate-300 leading-relaxed text-lg">
+                        El "Gap" es la cantidad de sorteos consecutivos que un número lleva sin salir. La IA calcula el promedio histórico de ausencia de cada número y lo compara con su ausencia actual. Si un número ha superado su límite máximo de ausencia histórica, se convierte en un candidato inminente (Estrategia Rezagada).
+                    </p>
+                </section>
+
+                <section class="bg-slate-900/30 border border-red-800/50 p-8 rounded-3xl hover:bg-slate-900/50 transition-colors">
+                    <h2 class="text-2xl font-bold text-white flex items-center gap-3 mb-4">
+                        <span class="text-yellow-500 text-3xl font-black">4.</span> Control de Sumas y Paridad
+                    </h2>
+                    <p class="text-slate-300 leading-relaxed mb-4 text-lg">
+                        Los sorteos ganadores casi nunca son extremos (ej: 1, 2, 3, 4, 5, 6). Existe una "Zona de Oro" matemática. Torito Expert AI filtra las combinaciones para asegurar que:
+                    </p>
+                    <ul class="list-disc list-inside text-slate-300 space-y-2 text-lg">
+                        <li>La suma total de las 6 bolillas (entre el 1 y el 40) caiga dentro de la campana de Gauss histórica (sumatoria ideal entre 95 y 145).</li>
+                        <li>Exista un balance entre números pares e impares (ej: 3/3, o 4/2).</li>
+                    </ul>
+                </section>
+
+                <section class="bg-slate-900/30 border border-red-800/50 p-8 rounded-3xl hover:bg-slate-900/50 transition-colors border-yellow-500/20 shadow-[0_0_15px_rgba(234,179,8,0.05)]">
+                    <h2 class="text-2xl font-bold text-white flex items-center gap-3 mb-4">
+                        <span class="text-yellow-500 text-3xl font-black">5.</span> Multi-Filtros Avanzados
+                    </h2>
+                    <p class="text-slate-300 leading-relaxed mb-4 text-lg">
+                        Nuestra IA simula hasta <strong>5,000 jugadas</strong> y aplica filtros matemáticos ultra precisos antes de sugerirte una combinación:
+                    </p>
+                    <ul class="list-disc list-inside text-slate-300 space-y-2 text-lg">
+                        <li><strong>Distribución por Décadas:</strong> Rechazamos automáticamente las jugadas que acumulan 4 o más números en la misma decena.</li>
+                        <li><strong>Anti-Clones Históricos:</strong> Verificamos contra toda nuestra base de datos. Si la jugada generada es <em>idéntica</em> a un sorteo ganador del pasado, se rechaza.</li>
+                        <li><strong>Intersección Cercana:</strong> Bonificamos combinaciones que repiten un porcentaje óptimo de números de acuerdo a las tendencias.</li>
+                    </ul>
+                </section>
+
+                <section class="bg-gradient-to-br from-red-900/80 to-slate-900 border border-yellow-500/30 p-8 rounded-3xl shadow-[0_0_30px_rgba(234,179,8,0.08)] relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-yellow-500/10 rounded-full blur-3xl"></div>
+                    <h2 class="text-2xl font-bold text-white flex items-center gap-3 mb-6 relative z-10">
+                        <span class="text-yellow-500 text-3xl font-black">⭐</span> La Estrategia del "Ticket Perfecto"
+                    </h2>
+                    <p class="text-slate-300 leading-relaxed mb-6 text-lg relative z-10">
+                        Ninguna IA puede garantizar ganar la lotería, pero <strong>sí podemos estructurar una "Cartera de Jugadas"</strong> para cubrir la mayor cantidad de patrones probabilísticos. Si quieres maximizar tus probabilidades sin gastar de más, matemáticamente la estrategia óptima es armar un ticket de <strong>4 jugadas</strong>:
+                    </p>
+                    <div class="grid sm:grid-cols-2 gap-4 relative z-10">
+                        <div class="bg-slate-950/50 p-4 rounded-2xl border border-red-800/50">
+                            <h3 class="text-yellow-400 font-bold mb-2 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-yellow-500"></span> 2 Jugadas Equilibradas</h3>
+                            <p class="text-sm text-slate-400">Representan el 50% de tu ticket. Cubren el comportamiento estadísticamente normal y más frecuente del bombo (campana de Gauss).</p>
+                        </div>
+                        <div class="bg-slate-950/50 p-4 rounded-2xl border border-red-800/50">
+                            <h3 class="text-red-400 font-bold mb-2 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-red-500"></span> 1 Jugada de La Racha</h3>
+                            <p class="text-sm text-slate-400">Atrapa anomalías físicas a corto plazo. Agrupa esos números "calientes" que por alguna razón están saliendo más seguido este mes.</p>
+                        </div>
+                        <div class="bg-slate-950/50 p-4 rounded-2xl border border-red-800/50 sm:col-span-2">
+                            <h3 class="text-blue-400 font-bold mb-2 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-blue-500"></span> 1 Jugada de El Golpe (Rezagados)</h3>
+                            <p class="text-sm text-slate-400">Juega con la tensión matemática. Si el bombo decide arrojar números que hace mucho no salen (reversión a la media), tú los tendrás cubiertos.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            
+            <div class="mt-16 text-center">
+                <a href="/" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-yellow-500 hover:bg-yellow-400 text-red-950 font-black rounded-xl transition-all shadow-[0_0_20px_rgba(234,179,8,0.3)] hover:scale-105 text-lg">
+                    Generar Mi Jugada Ahora
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="border-t border-red-800/50 mt-12 py-8 bg-red-950/50 backdrop-blur-sm">
+        <div class="max-w-6xl mx-auto px-4 text-center flex flex-col items-center">
+          <p class="text-slate-500 text-sm mb-4 max-w-2xl leading-relaxed">
+            Torito Expert AI es una herramienta de análisis estadístico independiente diseñada para maximizar tus probabilidades de éxito mediante modelos matemáticos. Para registrar y realizar tus jugadas oficiales, visita la web oficial: <a href="https://www.loteriastorito.com/" target="_blank" rel="noopener noreferrer" class="text-yellow-500 hover:text-yellow-400 transition-colors font-semibold underline underline-offset-4 decoration-yellow-500/30 hover:decoration-yellow-400">www.loteriastorito.com</a>.
+          </p>
+          <p class="text-slate-400 font-medium flex items-center justify-center gap-2">
+            Hecho con <span class="text-red-500 animate-pulse text-lg">❤</span> por 
+            <a href="mailto:info@peramas.com" class="text-yellow-500 hover:text-yellow-400 transition-colors font-bold underline underline-offset-4 decoration-yellow-500/30 hover:decoration-yellow-400">
+                Joan Peramas
+            </a>
+          </p>
+          <div class="mt-4 pt-4 border-t border-red-800/50 w-full flex justify-center">
+            <a href="https://github.com/joanperamasc/fe_torito_expert_ai" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-white transition-colors flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.24c3-.3 6-1.5 6-6.76a5.5 5.5 0 0 0-1.5-3.8c.15-.38.65-1.8-.15-3.8 0 0-1.2-.38-3.9 1.45a13.3 13.3 0 0 0-7 0C6.2 1.62 5 2 5 2c-.8 2-.3 3.42-.15 3.8A5.5 5.5 0 0 0 3.35 9.6c0 5.26 3 6.46 6 6.76-.7.62-1 1.5-1 2.5v4"/><path d="M7 20c-3.1 1-5-1-5-3"/></svg>
+              <span class="font-medium text-sm">Código Abierto en GitHub</span>
+            </a>
+          </div>
+        </div>
+    </footer>
+</body>
+</html>
