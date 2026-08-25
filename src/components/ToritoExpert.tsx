@@ -687,6 +687,52 @@ export default function ToritoExpert() {
           </div>
         )}
 
+        {/* Footer: Otros Expertos de Lotería */}
+        <nav aria-label="Otros Expertos de Lotería" className="w-full max-w-3xl mx-auto border-t border-red-800/50 pt-6 mt-12">
+          <h2 className="text-yellow-400 font-black text-xs uppercase tracking-widest mb-4">
+            Otros Expertos de Lotería
+          </h2>
+
+          <div className="grid gap-3 sm:grid-cols-3 text-left">
+            <a
+              href="https://tinkaexpert.peramas.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group border border-red-800/70 hover:border-yellow-500/50 bg-red-950/40 hover:bg-red-900/40 px-4 py-3 transition-colors"
+            >
+              <span className="block text-slate-100 font-bold group-hover:text-yellow-400 transition-colors">
+                Tinka Expert
+              </span>
+              <span className="block text-xs text-slate-500 mt-1">
+                La Tinka y Boliyapa
+              </span>
+            </a>
+
+            <a
+              href="https://kabalaexpert.peramas.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group border border-red-800/70 hover:border-yellow-500/50 bg-red-950/40 hover:bg-red-900/40 px-4 py-3 transition-colors"
+            >
+              <span className="block text-slate-100 font-bold group-hover:text-yellow-400 transition-colors">
+                Kábala Expert
+              </span>
+              <span className="block text-xs text-slate-500 mt-1">
+                Análisis de Kábala
+              </span>
+            </a>
+
+            <div className="border border-yellow-500/40 bg-yellow-500/10 px-4 py-3">
+              <span className="block text-yellow-400 font-bold">
+                Torito Expert
+              </span>
+              <span className="block text-xs text-yellow-200/70 mt-1">
+                Proyecto actual
+              </span>
+            </div>
+          </div>
+        </nav>
+
       </main>
     </div>
   );
