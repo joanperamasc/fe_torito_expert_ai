@@ -94,13 +94,42 @@ import GoogleAnalytics from '../components/GoogleAnalytics.astro';
                 A diferencia de los sistemas de elección aleatoria ("Al azar"), Torito Expert AI procesa la base de datos histórica completa de todos los sorteos, aplicando modelos estadísticos matemáticos para maximizar tus probabilidades de acertar en la lotería Torito 1 Millón.
             </p>
 
+            <section class="bg-slate-900/30 border border-yellow-500/30 p-8 rounded-3xl mb-10">
+                <h2 class="text-2xl font-bold text-white flex items-center gap-3 mb-4">
+                    <span class="text-yellow-500 text-3xl font-black">🎯</span> Reglas Oficiales del Juego
+                </h2>
+                <ul class="list-disc list-inside text-slate-300 space-y-2 text-lg">
+                    <li><strong>Elige 6 bolillas</strong> entre el 1 y el 40 (o al azar).</li>
+                    <li><strong>Define sorteos consecutivos</strong> en los que deseas participar.</li>
+                    <li><strong>Costo por jugada:</strong> S/ 3.00.</li>
+                    <li><strong>Premio mayor publicado:</strong> S/ 1,000,000.00 (monto bruto; sujeto a retencion legal).</li>
+                    <li><strong>Mayores de 18 anos:</strong> juego permitido solo para adultos.</li>
+                    <li><strong>Cobertura:</strong> juego valido dentro del territorio peruano.</li>
+                    <li><strong>Sorteos regulares:</strong> miercoles y domingos.</li>
+                    <li><strong>Cierre de ventas:</strong> 7:30 pm del dia del sorteo.</li>
+                    <li><strong>Publicacion oficial:</strong> resultados en www.loteriastorito.com (aprox. desde 8:00 pm).</li>
+                </ul>
+                <p class="text-sm text-slate-400 mt-4">
+                    Fuente del reglamento: <a href="https://www.loteriastorito.com/reglas" target="_blank" rel="noopener noreferrer" class="text-yellow-500 hover:text-yellow-400 underline underline-offset-4 decoration-yellow-500/30 hover:decoration-yellow-400">www.loteriastorito.com/reglas</a>
+                </p>
+            </section>
+
             <div class="space-y-10">
                 <section class="bg-slate-900/30 border border-red-800/50 p-8 rounded-3xl hover:bg-slate-900/50 transition-colors">
                     <h2 class="text-2xl font-bold text-white flex items-center gap-3 mb-4">
                         <span class="text-yellow-500 text-3xl font-black">1.</span> Análisis de Frecuencias Absolutas
                     </h2>
                     <p class="text-slate-300 leading-relaxed text-lg">
-                        Nuestra red neuronal rastrea cuántas veces ha salido cada bolilla desde el inicio de los tiempos. Identificamos los números "Calientes" (los que más salen) y los "Fríos" (los más rezagados). En una muestra lo suficientemente grande, la lotería no es perfectamente aleatoria debido a las imperfecciones mecánicas de los bombos.
+                        Nuestro motor estadístico rastrea cuántas veces ha salido cada bolilla en el historial. Identificamos números "Calientes" (más frecuentes) y "Fríos" (más rezagados) para construir jugadas con criterios consistentes.
+                    </p>
+                </section>
+
+                <section class="bg-slate-900/30 border border-red-800/50 p-8 rounded-3xl hover:bg-slate-900/50 transition-colors">
+                    <h2 class="text-2xl font-bold text-white flex items-center gap-3 mb-4">
+                        <span class="text-yellow-500 text-3xl font-black">1.1</span> Sobre el sorteo oficial
+                    </h2>
+                    <p class="text-slate-300 leading-relaxed text-lg">
+                        El sorteo oficial es electrónico y certificado por un laboratorio independiente (según reglamento vigente). Esta web no reemplaza al operador oficial: solo ofrece una capa de análisis estadístico sobre resultados públicos.
                     </p>
                 </section>
 
@@ -130,7 +159,7 @@ import GoogleAnalytics from '../components/GoogleAnalytics.astro';
                         Los sorteos ganadores casi nunca son extremos (ej: 1, 2, 3, 4, 5, 6). Existe una "Zona de Oro" matemática. Torito Expert AI filtra las combinaciones para asegurar que:
                     </p>
                     <ul class="list-disc list-inside text-slate-300 space-y-2 text-lg">
-                        <li>La suma total de las 6 bolillas (entre el 1 y el 40) caiga dentro de la campana de Gauss histórica (sumatoria ideal entre 95 y 145).</li>
+                        <li>La suma total de las 6 bolillas (entre el 1 y el 40) caiga dentro de un rango estadístico preferente (sumatoria ideal entre 100 y 155).</li>
                         <li>Exista un balance entre números pares e impares (ej: 3/3, o 4/2).</li>
                     </ul>
                 </section>
@@ -164,13 +193,31 @@ import GoogleAnalytics from '../components/GoogleAnalytics.astro';
                         </div>
                         <div class="bg-slate-950/50 p-4 rounded-2xl border border-red-800/50">
                             <h3 class="text-red-400 font-bold mb-2 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-red-500"></span> 1 Jugada de La Racha</h3>
-                            <p class="text-sm text-slate-400">Atrapa anomalías físicas a corto plazo. Agrupa esos números "calientes" que por alguna razón están saliendo más seguido este mes.</p>
+                            <p class="text-sm text-slate-400">Prioriza numeros "calientes" segun su frecuencia reciente en la base historica.</p>
                         </div>
                         <div class="bg-slate-950/50 p-4 rounded-2xl border border-red-800/50 sm:col-span-2">
                             <h3 class="text-blue-400 font-bold mb-2 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-blue-500"></span> 1 Jugada de El Golpe (Rezagados)</h3>
-                            <p class="text-sm text-slate-400">Juega con la tensión matemática. Si el bombo decide arrojar números que hace mucho no salen (reversión a la media), tú los tendrás cubiertos.</p>
+                            <p class="text-sm text-slate-400">Incluye bolillas rezagadas para cubrir escenarios de posible reversion a la media.</p>
                         </div>
                     </div>
+                </section>
+
+                <section class="bg-slate-900/30 border border-yellow-500/20 p-8 rounded-3xl">
+                    <h2 class="text-2xl font-bold text-white flex items-center gap-3 mb-4">
+                        <span class="text-yellow-500 text-3xl font-black">📌</span> Tabla de Premios Referencial
+                    </h2>
+                    <p class="text-slate-300 leading-relaxed mb-4 text-lg">
+                        Segun reglamento vigente, cada jugada cuesta S/ 3.00 y los niveles son:
+                    </p>
+                    <ul class="list-disc list-inside text-slate-300 space-y-2 text-lg">
+                        <li><strong>6 aciertos:</strong> S/ 1,000,000.00 bruto (S/ 900,000.00 neto referencial por retencion de 10%).</li>
+                        <li><strong>5 aciertos:</strong> S/ 1,000.00 bruto (S/ 900.00 neto referencial).</li>
+                        <li><strong>4 aciertos:</strong> S/ 40.00 bruto (S/ 36.00 neto referencial).</li>
+                        <li><strong>3 aciertos:</strong> 2 jugadas gratis.</li>
+                    </ul>
+                    <p class="text-sm text-slate-400 mt-4">
+                        NEXLOT puede actualizar condiciones y montos; verifica siempre la version oficial del reglamento antes de jugar.
+                    </p>
                 </section>
             </div>
             

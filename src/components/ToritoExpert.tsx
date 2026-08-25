@@ -47,6 +47,25 @@ interface DrawRecord {
   id: string;
 }
 
+const MIN_BALL = 1;
+const MAX_BALL = 40;
+const REQUIRED_BALLS = 6;
+
+const isValidBall = (n: number) => n >= MIN_BALL && n <= MAX_BALL;
+
+const normalizeDrawNumbers = (values: unknown): number[] | null => {
+  if (!Array.isArray(values)) return null;
+
+  const validUnique = Array.from(
+    new Set(
+      values.filter((v): v is number => Number.isInteger(v) && isValidBall(v))
+    )
+  );
+
+  if (validUnique.length !== REQUIRED_BALLS) return null;
+  return validUnique;
+};
+
 export default function ToritoExpert() {
   const [draws, setDraws] = useState<DrawRecord[]>([]);
   const [error, setError] = useState<string | null>(null);
@@ -59,13 +78,26 @@ export default function ToritoExpert() {
 
   useEffect(() => {
     const processData = (data: any[]) => {
-      const formattedDraws: DrawRecord[] = data.map((item) => {
-        return {
-           id: item.id.toString(),
-           date: item.f,
-           numbers: [...item.n]
-        };
-      });
+      const formattedDraws: DrawRecord[] = data
+        .map((item) => {
+          const normalizedNumbers = normalizeDrawNumbers(item.n);
+          if (!normalizedNumbers) return null;
+
+          return {
+            id: String(item.id),
+            date: String(item.f),
+            numbers: normalizedNumbers,
+          };
+        })
+        .filter((draw): draw is DrawRecord => draw !== null);
+
+      if (formattedDraws.length === 0) {
+        setError('No se encontraron sorteos validos (6 bolillas unicas entre 1 y 40).');
+        setDraws([]);
+        setPrediction(null);
+        return;
+      }
+
       setDraws(formattedDraws);
       setPrediction(null);
       setError(null);
@@ -115,15 +147,14 @@ export default function ToritoExpert() {
     });
 
     const gap: Record<number, number> = {};
-    for (let i = 1; i <= 42; i++) {
+    for (let i = MIN_BALL; i <= MAX_BALL; i++) {
       gap[i] = lastSeenIndex[i] !== undefined ? (totalDraws - 1 - lastSeenIndex[i]) : totalDraws;
     }
 
-    const sortedNums = Object.entries(frequency)
-      .map(([numStr, count]) => {
-        const num = parseInt(numStr, 10);
-        return { num, count, gap: gap[num] };
-      })
+    const sortedNums = Array.from({ length: MAX_BALL }, (_, idx) => {
+      const num = idx + MIN_BALL;
+      return { num, count: frequency[num] || 0, gap: gap[num] };
+    })
       .sort((a, b) => b.count - a.count); 
 
     const hotNumbers = sortedNums.slice(0, 15).map(x => x.num); 
@@ -227,7 +258,7 @@ export default function ToritoExpert() {
 
     const maxCount = stats.sortedNums[0]?.count || 1;
 
-    for (let i = 1; i <= 42; i++) {
+    for (let i = MIN_BALL; i <= MAX_BALL; i++) {
         let weight = 1;
         const freqScore = (frequency[i] || 0) / maxCount;
         const gapScore = Math.min((gap[i] || 0), 100) / 100; 
@@ -246,7 +277,7 @@ export default function ToritoExpert() {
     }
 
     const selection = new Set<number>();
-    while (selection.size < 6) {
+    while (selection.size < REQUIRED_BALLS) {
         const pick = pool[Math.floor(Math.random() * pool.length)];
         selection.add(pick);
     }
@@ -259,13 +290,13 @@ export default function ToritoExpert() {
       const sum = numbers.reduce((a, b) => a + b, 0);
       const odds = numbers.filter(n => n % 2 !== 0).length;
       
-      // 1. FILTRO DE SUMA ESTRICTO para 42 números (Media aprox 129, rango ideal: 100 a 155)
+      // 1. FILTRO DE SUMA ESTRICTO para 40 números (rango ideal: 100 a 155)
       if (sum < 80 || sum > 180) return -1; 
       let sumBonus = 0;
       if (sum >= 100 && sum <= 155) sumBonus = 0.15; 
 
       // 2. FILTRO PAR/IMPAR
-      if (odds === 0 || odds === 6) return -1; 
+      if (odds === 0 || odds === REQUIRED_BALLS) return -1; 
       let oddEvenBonus = 0;
       if (odds === 3) oddEvenBonus = 0.15;
       else if (odds === 2 || odds === 4) oddEvenBonus = 0.05;
@@ -279,13 +310,12 @@ export default function ToritoExpert() {
       if (consecutives > 2) return -1; 
 
       // 4. FILTRO DE DÉCADAS (Evitar 4 o más números en la misma decena)
-      const decades = [0, 0, 0, 0, 0];
+        const decades = [0, 0, 0, 0];
       numbers.forEach(n => {
-          if (n < 10) decades[0]++;
-          else if (n < 20) decades[1]++;
-          else if (n < 30) decades[2]++;
-          else if (n < 40) decades[3]++;
-          else decades[4]++;
+          const decadeIndex = Math.floor((n - 1) / 10);
+          if (decadeIndex >= 0 && decadeIndex < decades.length) {
+            decades[decadeIndex]++;
+          }
       });
       if (decades.some(d => d >= 4)) return -1;
 
@@ -299,13 +329,13 @@ export default function ToritoExpert() {
 
       // 6. SCORE ESTRATÉGICO
       let strategyScore = 0;
-      const hotCount = numbers.filter(n => stats.hotNumbers.includes(n)).length;
-      const coldCount = numbers.filter(n => stats.coldNumbers.includes(n)).length;
+        const hotCount = numbers.filter(n => stats.hotNumbers.includes(n)).length;
+        const coldCount = numbers.filter(n => stats.coldNumbers.includes(n)).length;
       
       if (strategy === 'hot') {
-          strategyScore = (hotCount / 6) * 0.55; 
+          strategyScore = (hotCount / REQUIRED_BALLS) * 0.55; 
       } else if (strategy === 'overdue') {
-          strategyScore = (coldCount / 6) * 0.55;
+          strategyScore = (coldCount / REQUIRED_BALLS) * 0.55;
       } else { 
           if (hotCount >= 2 && hotCount <= 3 && coldCount >= 1 && coldCount <= 2) {
               strategyScore = 0.55; 
@@ -404,7 +434,7 @@ export default function ToritoExpert() {
                 
                 <div className="bg-red-950/60 backdrop-blur rounded-3xl p-6 border border-yellow-500/20 shadow-2xl">
                     <h3 className="text-yellow-400 font-black text-sm uppercase tracking-widest mb-6 flex items-center gap-2">
-                        <BrainCircuit size={18}/> Modelo Neuronal
+                      <BrainCircuit size={18}/> Motor Estadistico
                     </h3>
                     
                     <div className="space-y-4">
@@ -443,7 +473,7 @@ export default function ToritoExpert() {
                             </div>
                             <div>
                                 <span className={`font-black text-lg block mb-1 ${selectedStrategy === 'overdue' ? 'text-blue-400' : 'text-slate-300'}`}>El Golpe</span>
-                                <span className="text-xs text-slate-400 font-medium leading-relaxed">Persigue los números rezagados ("fríos"). La teoría de reversión a la media: si no sale, ya le toca.</span>
+                                <span className="text-xs text-slate-400 font-medium leading-relaxed">Persigue los números rezagados ("frios") usando la tendencia historica de ausencias y frecuencia reciente.</span>
                             </div>
                         </button>
                     </div>
@@ -687,6 +717,20 @@ export default function ToritoExpert() {
           </div>
         )}
 
+        <div className="w-full max-w-3xl mx-auto mt-10 rounded-2xl border border-yellow-500/30 bg-red-950/50 px-4 py-3 text-center">
+          <p className="text-xs sm:text-sm text-slate-300">
+            Referencia oficial del sorteo y reglamento: 
+            <a
+              href="https://www.loteriastorito.com/reglas"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ml-1 font-semibold text-yellow-400 hover:text-yellow-300 underline underline-offset-4 decoration-yellow-500/40 hover:decoration-yellow-300"
+            >
+              loteriastorito.com/reglas
+            </a>
+          </p>
+        </div>
+
         {/* Footer: Otros Expertos de Lotería */}
         <nav aria-label="Otros Expertos de Lotería" className="w-full max-w-3xl mx-auto border-t border-red-800/50 pt-6 mt-12">
           <h2 className="text-yellow-400 font-black text-xs uppercase tracking-widest mb-4">
@@ -718,7 +762,7 @@ export default function ToritoExpert() {
                 Kábala Expert
               </span>
               <span className="block text-xs text-slate-500 mt-1">
-                Análisis de Kábala
+                Kábala y Chau Chamba
               </span>
             </a>
 
