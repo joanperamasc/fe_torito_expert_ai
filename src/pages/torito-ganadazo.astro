@@ -1,0 +1,47 @@
+---
+import '../styles/global.css';
+import GanadazoExpert from '../components/GanadazoExpert.tsx';
+import GoogleAnalytics from '../components/GoogleAnalytics.astro';
+---
+
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+		<GoogleAnalytics measurementId="G-H6QB581PQE" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="generator" content={Astro.generator} />
+
+		<title>Torito Ganadazo Expert | Estadísticas y jugadas</title>
+		<meta name="description" content="Analiza el historial de Torito Ganadazo, sus números frecuentes y rezagados, y genera jugadas estadísticas de 5 números." />
+		<meta name="keywords" content="Torito Ganadazo, resultados Ganadazo, estadísticas Ganadazo, lotería Perú, números Ganadazo" />
+		<meta name="author" content="Torito Expert" />
+		<meta name="robots" content="index, follow" />
+		<link rel="canonical" href="https://toritoexpert.peramas.com/torito-ganadazo" />
+
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://toritoexpert.peramas.com/torito-ganadazo" />
+		<meta property="og:title" content="Torito Ganadazo Expert | Estadísticas y jugadas" />
+		<meta property="og:description" content="Consulta estadísticas independientes y genera jugadas de 5 números para Torito Ganadazo." />
+		<meta property="og:image" content="https://toritoexpert.peramas.com/social-preview.jpg" />
+
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content="Torito Ganadazo Expert | Estadísticas y jugadas" />
+		<meta name="twitter:description" content="Consulta estadísticas independientes y genera jugadas de 5 números para Torito Ganadazo." />
+		<meta name="twitter:image" content="https://toritoexpert.peramas.com/social-preview.jpg" />
+
+		<script type="application/ld+json" set:html={JSON.stringify({
+			'@context': 'https://schema.org',
+			'@type': 'WebApplication',
+			name: 'Torito Ganadazo Expert',
+			url: 'https://toritoexpert.peramas.com/torito-ganadazo',
+			description: 'Herramienta independiente de análisis estadístico para Torito Ganadazo.',
+			applicationCategory: 'UtilityApplication',
+			operatingSystem: 'All',
+			offers: { '@type': 'Offer', price: '0', priceCurrency: 'PEN' },
+		})} />
+	</head>
+	<body class="bg-red-950 text-slate-200 antialiased selection:bg-yellow-500/30">
+		<GanadazoExpert client:load />
+	</body>
+</html>

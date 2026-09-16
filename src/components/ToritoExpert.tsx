@@ -1,5 +1,6 @@
 import React, { useState, useRef, useMemo, useEffect } from 'react';
 import { useVirtualizer } from '@tanstack/react-virtual';
+import LotteryTabs from './LotteryTabs';
 
 const Sparkles = ({ className, size = 24 }: { className?: string, size?: number }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
@@ -363,6 +364,7 @@ export default function ToritoExpert() {
               <p className="text-[10px] text-yellow-400/80 uppercase tracking-[0.2em] font-bold -mt-1">IA Predictiva Torito 1 Millón</p>
             </div>
           </div>
+          <LotteryTabs activeLottery="torito-millon" />
           {draws.length > 0 && (
              <div className="flex items-center gap-3 bg-red-900/50 px-4 py-2 rounded-full border border-red-800 shadow-inner">
                 <div className="flex items-center gap-6">
